@@ -1,0 +1,16 @@
+-- Anti-AFK Script
+local vu = game:GetService("VirtualUser")
+
+-- Function to simulate mouse activity
+local function simulateMouseActivity()
+    while true do
+        -- Simulate right mouse button press and release
+        vu:Button2Down(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+        wait(1) -- Wait for 1 second
+        vu:Button2Up(Vector2.new(0,0), workspace.CurrentCamera.CFrame)
+        wait(60) -- Wait for 60 seconds before repeating
+    end
+end
+
+-- Connect the Idled event to the function
+game:GetService("Players").LocalPlayer.Idled:Connect(simulateMouseActivity)
